@@ -1,0 +1,33 @@
+$pink-1: rgba(255, 178, 178, 0.71);
+$pink-2: #ff7878;
+$pink-3: #df4646;
+$pink-4: #a70808;
+
+$error: #2e706a;
+$error-light: rgba(56, 129, 124, 0.41);
+$white-ultra: #ffffff;
+$black-ultra: #000000;
+
+@mixin accent-body {
+  font-family: 'Minako', sans-serif;
+  font-size: 20px;
+  line-height: 120%;
+  font-weight: normal;
+  letter-spacing: 1px
+}
+
+@mixin h1 {
+  font-family: 'Minako', sans-serif;
+  font-size: 40px;
+  line-height: 120%;
+  font-weight: normal;
+  letter-spacing: 1px
+}
+
+@mixin text {
+  font-family: 'Minako', sans-serif;
+  font-size: 16px;
+  line-height: 120%;
+  font-weight: normal;
+  letter-spacing: 1px
+}
