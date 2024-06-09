@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { vMaska, MaskOptions } from "maska";
 import { computed, PropType } from "vue";
-import { InputEnterHints, InputTypes } from "./types.ts";
+import { InputEnterHints, InputTypes, Error } from "./types.ts";
 
 const props = defineProps({
   id: {
@@ -10,7 +10,7 @@ const props = defineProps({
   },
 
   modelValue: {
-    type: [String, Number],
+    type: [String, Number, Date],
     required: true,
   },
 
@@ -43,7 +43,7 @@ const props = defineProps({
   },
 
   error: {
-    type: String,
+    type: String as PropType<Error>,
     default: null,
   },
 });
@@ -81,7 +81,7 @@ const inputChange = (event: Event) => {
       @blur="emit('blur')"
     />
 
-    <p v-if="error">{{ error }}</p>
+    <p v-if="error" class="main-input__error-text">{{ error }}</p>
   </div>
 </template>
 
@@ -105,7 +105,7 @@ const inputChange = (event: Event) => {
     @include text;
 
     &::placeholder {
-      color: $pink-1;
+      color: $pink-1 !important;
     }
 
     &:focus {
@@ -113,9 +113,17 @@ const inputChange = (event: Event) => {
     }
   }
 
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(100%);
+    background-color: #20b9b9; //invert $pink-3 color
+    padding: 4px;
+    border-radius: 5px;
+  }
+
   &_error {
     input {
       border: 2px solid $error;
+      color: $error;
 
       &:focus {
         box-shadow: 0 0 5px $error;
@@ -126,9 +134,21 @@ const inputChange = (event: Event) => {
       }
     }
 
+    input[type="date"]::-webkit-calendar-picker-indicator {
+      filter: invert(100%);
+      background-color: $pink-2; //invert $error color
+      padding: 4px;
+      border-radius: 5px;
+    }
+
     label {
       color: $error;
     }
+  }
+
+  &__error-text {
+    @include caption;
+    color: $error;
   }
 }
 </style>

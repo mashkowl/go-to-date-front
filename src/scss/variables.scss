@@ -29,5 +29,13 @@ $black-ultra: #000000;
   font-size: 16px;
   line-height: 120%;
   font-weight: normal;
+  letter-spacing: 1.3px
+}
+
+@mixin caption {
+  font-family: 'Minako', sans-serif;
+  font-size: 12px;
+  line-height: 120%;
+  font-weight: normal;
   letter-spacing: 1px
 }
